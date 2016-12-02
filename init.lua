@@ -1,3 +1,4 @@
+local slackResize = require 'modules/slack-resize'
 local windows = require 'modules/windows'
 local wifi = require 'modules/wifi'
 
@@ -19,6 +20,7 @@ hs.notify.new({title="Hammerspoon", informativeText="Config reloaded"}):send()
 -- initialize modules here
 windows()
 wifi()
+--slackResize()
 
 --[[ idea
   save position of windows
