@@ -13,6 +13,7 @@ function windowOrder()
     local max = screen:frame()
     return {win = win, f = f, screen = screen, max = max}
   end
+
   function position(area)
     if area == 'right' then
       return function()
@@ -50,7 +51,7 @@ function windowOrder()
     if area == 'left' then
       return function()
         local pos = getPos();
-        pos.f.x = 0
+        pos.f.x = pos.max.x
         pos.f.y = pos.max.y
         pos.f.w = pos.max.w / 2
         pos.f.h = pos.max.h
@@ -61,7 +62,7 @@ function windowOrder()
     if area == 'top-left' then
       return function()
         local pos = getPos();
-        pos.f.x = 0
+        pos.f.x = pos.max.x
         pos.f.y = pos.max.y
         pos.f.w = pos.max.w / 2
         pos.f.h = pos.max.h / 2
@@ -72,7 +73,7 @@ function windowOrder()
     if area == 'bottom-left' then
       return function()
         local pos = getPos();
-        pos.f.x = 0
+        pos.f.x = pos.max.x
         pos.f.y = pos.max.h / 2
         pos.f.w = pos.max.w / 2
         pos.f.h = pos.max.h / 2 + 25
