@@ -1,6 +1,7 @@
-local slackResize = require 'modules/slack-resize'
+-- local slackResize = require 'modules/slack-resize'
 local windows = require 'modules/windows'
 local wifi = require 'modules/wifi'
+local itunes = require 'modules/music'
 
 -- config reloading - no real need to touch
 function reloadConfig(files)
@@ -19,8 +20,9 @@ hs.notify.new({title="Hammerspoon", informativeText="Config reloaded"}):send()
 
 -- initialize modules here
 windows()
+itunes.getCurrentTrack()
 wifi()
---slackResize()
+
 
 --[[ idea
   save position of windows
