@@ -104,6 +104,12 @@ function windowOrder()
       end
     end
 
+    if area == 'screen' then
+      return function()
+        hs.window.focusedWindow():moveOneScreenWest()
+      end
+    end
+
   end
 
   hs.hotkey.bind(KEYBOARD_MODIFIER, 'right', position('right'))
@@ -121,6 +127,8 @@ function windowOrder()
   hs.hotkey.bind(KEYBOARD_MODIFIER, 'c', position('centre'))
   hs.hotkey.bind(KEYBOARD_MODIFIER, '-', position('small'))
   hs.hotkey.bind(KEYBOARD_MODIFIER, '=', position('full'))
+
+  hs.hotkey.bind(KEYBOARD_MODIFIER, 'v', position('screen'))
 end
 
 return windowOrder
