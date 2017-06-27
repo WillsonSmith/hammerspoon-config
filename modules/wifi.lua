@@ -2,32 +2,31 @@
 
 function wifiMenubar()
   local wifiBar = hs.menubar.new()
-  wifiBar:setMenu({
-    { title = "Reconnect", fn = function() hs.wifi.setPower(false) hs.wifi.setPower(true) end }
-  })
-
-  function setTitle()
-    local title = hs.wifi.currentNetwork()
-    if not title then
-      wifiBar:setTitle('')
-      return
-    end
-    wifiBar:setTitle(title)
+  local title = hs.wifi.currentNetwork()
+  function setMenubarItem()
+    wifiBar:setTitle("↻")
+    wifiBar:setTooltip("Reset wifi")
   end
-  setTitle()
 
-  local watcher = hs.wifi.watcher.new(setTitle)
+  if title then
+    setMenubarItem()
+    wifiBar:setMenu({
+      {
+        title = string.format("Reconnect %s", title),
+        fn = function() hs.wifi.setPower(false) hs.wifi.setPower(true) end
+      }
+    })
+  end
+
+  local watcher = hs.wifi.watcher.new(setMenubarItem)
   watcher:start()
 
   function wifiBarClicked()
-
   end
 
   if wifiBar then
     wifiBar:setClickCallback(wifiBarClicked)
   end
-
-  -- show ip on click?
 end
 
 return wifiMenubar
