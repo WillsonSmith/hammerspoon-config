@@ -21,7 +21,7 @@ itunes.getCurrentTrack = function()
   function pasteInPlace()
     copySong()
     -- currently disable auto-paste because of facebook messenger input rate limit
-    --hs.eventtap.keyStrokes(songString())
+    hs.eventtap.keyStrokes(songString())
   end
 
   hs.hotkey.bind({'cmd', 'alt', 'shift'}, 's', pasteInPlace)

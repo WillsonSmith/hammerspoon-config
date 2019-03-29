@@ -1,7 +1,8 @@
 -- local slackResize = require 'modules/slack-resize'
-local windows = require 'modules/windows'
-local wifi = require 'modules/wifi'
-local itunes = require 'modules/music'
+-- local windows = require('modules/windows')
+local wifi = require('modules/wifi')
+local newWindows = require('modules.new_windows')
+-- local itunes = require 'modules/music'
 
 -- config reloading - no real need to touch
 function reloadConfig(files)
@@ -19,9 +20,10 @@ local myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", relo
 hs.notify.new({title="Hammerspoon", informativeText="Config reloaded"}):send()
 
 -- initialize modules here
-windows()
-itunes.getCurrentTrack()
+-- windows()
+-- itunes.getCurrentTrack()
 wifi()
+newWindows.setup()
 
 
 --[[ idea
